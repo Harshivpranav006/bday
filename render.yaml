@@ -1,0 +1,11 @@
+# Optional Render Blueprint — or configure manually in the dashboard
+services:
+  - type: web
+    name: shamm-birthday
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
