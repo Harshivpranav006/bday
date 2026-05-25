@@ -66,9 +66,9 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="h-full scroll-smooth">
+    <html lang="en" className="min-h-full scroll-smooth">
       <body
-        className={`${poppins.variable} ${nunito.variable} ${cormorant.variable} ${playfair.variable} ${greatVibes.variable} ${inter.variable} min-h-full antialiased`}
+        className={`${poppins.variable} ${nunito.variable} ${cormorant.variable} ${playfair.variable} ${greatVibes.variable} ${inter.variable} min-h-full touch-pan-y antialiased`}
       >
         {children}
       </body>

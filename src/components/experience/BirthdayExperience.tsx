@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MusicProvider } from "@/context/MusicContext";
 import { Countdown } from "@/components/sections/Countdown";
@@ -20,6 +20,12 @@ function ExperienceInner() {
   const onCountdownDone = useCallback(() => setPhase("loading"), []);
   const onLoadDone = useCallback(() => setPhase("main"), []);
 
+  useEffect(() => {
+    if (phase === "main") {
+      document.documentElement.classList.remove("scroll-locked");
+    }
+  }, [phase]);
+
   return (
     <>
       <AnimatePresence>
@@ -35,7 +41,7 @@ function ExperienceInner() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.9, ease: EASE_SMOOTH }}
-          className="relative min-h-screen bg-[#ffd6e7]"
+          className="relative min-h-screen touch-pan-y overflow-x-hidden bg-[#ffd6e7]"
         >
           <KawaiiCursor />
           <MusicToggle />

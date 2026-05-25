@@ -16,17 +16,26 @@
   --font-cute: var(--font-nunito);
 }
 
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
 html.scroll-locked,
 html.scroll-locked body {
   overflow: hidden;
   height: 100%;
+  touch-action: none;
 }
 
 body {
   background: var(--pastel-pink);
   color: var(--ink);
   font-family: var(--font-poppins), var(--font-nunito), system-ui, sans-serif;
-  overflow-x: hidden;
+  min-height: 100%;
 }
 
 .glass-card {

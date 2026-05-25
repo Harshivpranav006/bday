@@ -58,8 +58,7 @@ export function CakeSection() {
   return (
     <section
       id={SECTION_IDS.cake}
-      className="relative flex min-h-screen touch-none select-none flex-col items-center justify-center overflow-hidden px-6 py-24"
-      {...bind()}
+      className="relative flex min-h-screen touch-pan-y flex-col items-center justify-center px-6 py-24"
     >
       {done && <FloatingHearts count={20} />}
 
@@ -80,7 +79,10 @@ export function CakeSection() {
         Swipe anywhere to cut the cake!
       </motion.h2>
 
-      <div className="relative flex flex-col items-center gap-4">
+      <div
+        className="relative flex touch-none select-none flex-col items-center gap-4"
+        {...bind()}
+      >
         <KawaiiCharacter size="lg" holdingCake />
         <CakeVisual progress={cut} />
       </div>

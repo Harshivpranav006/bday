@@ -21,7 +21,7 @@ export function HeroSection() {
   return (
     <section
       id={SECTION_IDS.hero}
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-20 text-center"
+      className="relative flex min-h-screen touch-pan-y flex-col items-center justify-center overflow-x-hidden px-6 py-20 text-center"
     >
       <SoftBlobs />
       <FloatingHearts count={14} />

@@ -6,6 +6,8 @@ import Lenis from "lenis";
 export function useLenis(enabled = true) {
   useEffect(() => {
     if (!enabled) return;
+    const isMobile = window.matchMedia("(max-width: 767px), (pointer: coarse)").matches;
+    if (isMobile) return;
 
     const lenis = new Lenis({
       duration: 1.2,
