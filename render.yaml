@@ -1,11 +1,16 @@
-# Optional Render Blueprint — or configure manually in the dashboard
+# WEB SERVICE only — do not use Static Site for this Next.js app
 services:
   - type: web
     name: shamm-birthday
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build
+    buildCommand: npm run render:build
     startCommand: npm start
+    healthCheckPath: /api/health
     envVars:
+      - key: NODE_VERSION
+        value: "20.11.0"
+      - key: HOSTNAME
+        value: "0.0.0.0"
       - key: NODE_ENV
         value: production

@@ -4,12 +4,13 @@ import { motion } from "framer-motion";
 import { TypewriterMessage } from "@/components/ui/TypewriterMessage";
 import { SECTION_IDS } from "@/lib/constants";
 import { EASE_SMOOTH } from "@/lib/easing";
+import { messageFontVariables } from "@/lib/messageFonts";
 
 export function MessageSection() {
   return (
     <section
       id={SECTION_IDS.message}
-      className="relative flex min-h-screen items-center justify-center px-5 py-32 md:px-10"
+      className={`relative flex min-h-screen items-center justify-center px-5 py-32 md:px-10 ${messageFontVariables}`}
     >
       <div className="relative z-10 mx-auto w-full max-w-2xl">
         <motion.header
