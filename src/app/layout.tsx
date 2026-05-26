@@ -80,12 +80,6 @@ export default function RootLayout({
       <body
         className={`${fontVariables} min-h-full touch-pan-y antialiased`}
       >
-        <div
-          id="app-boot"
-          suppressHydrationWarning
-          className="fixed inset-0 z-[99999] bg-black transition-opacity duration-300"
-          aria-hidden
-        />
         {children}
       </body>
     </html>

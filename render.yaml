@@ -1,14 +1,10 @@
-# Web Service (NOT Static Site) — Node.js Next.js server
 services:
   - type: web
     name: shamm-birthday
     runtime: node
-    plan: free
     buildCommand: npm install && npm run build
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
         value: "20.11.0"
-      - key: HOSTNAME
-        value: "0.0.0.0"

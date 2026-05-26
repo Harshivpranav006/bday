@@ -21,6 +21,12 @@ function ExperienceInner() {
   const onLoadDone = useCallback(() => setPhase("main"), []);
 
   useEffect(() => {
+    return () => {
+      document.documentElement.classList.remove("scroll-locked");
+    };
+  }, []);
+
+  useEffect(() => {
     if (phase === "main") {
       document.documentElement.classList.remove("scroll-locked");
     }

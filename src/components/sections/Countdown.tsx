@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { EASE_SMOOTH } from "@/lib/easing";
-import { dismissAppBoot } from "@/lib/dismissAppBoot";
-
 type Props = { onComplete: () => void };
 
 const NUMBERS = ["3", "2", "1"] as const;
@@ -14,7 +12,6 @@ export function Countdown({ onComplete }: Props) {
   const [step, setStep] = useState(0);
 
   useEffect(() => {
-    dismissAppBoot();
     document.documentElement.classList.add("scroll-locked");
 
     const reduced =
