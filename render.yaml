@@ -1,10 +1,10 @@
-# Web Service (NOT Static Site)
+# Web Service (NOT Static Site) — Node.js Next.js server
 services:
   - type: web
     name: shamm-birthday
     runtime: node
     plan: free
-    buildCommand: npm run render:build
+    buildCommand: npm install && npm run build
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:

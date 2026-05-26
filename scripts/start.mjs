@@ -9,24 +9,32 @@ const serverEntry = join(standaloneDir, "server.js");
 
 if (!existsSync(serverEntry)) {
   console.error(
-    "[start] Missing .next/standalone/server.js — run npm run build first."
+    "[start] Missing .next/standalone/server.js — run: npm install && npm run build"
   );
   process.exit(1);
 }
 
-const port = process.env.PORT || "10000";
+const port = String(process.env.PORT || "10000");
 const hostname = process.env.HOSTNAME || "0.0.0.0";
 
-process.env.PORT = port;
-process.env.HOSTNAME = hostname;
-process.env.NODE_ENV = "production";
+const env = {
+  ...process.env,
+  NODE_ENV: "production",
+  PORT: port,
+  HOSTNAME: hostname,
+};
 
-console.log(`[start] Next.js standalone → http://${hostname}:${port}`);
+console.log(`[start] Listening on ${hostname}:${port}`);
 
 const child = spawn(process.execPath, [serverEntry], {
   cwd: standaloneDir,
-  env: process.env,
+  env,
   stdio: "inherit",
+});
+
+child.on("error", (err) => {
+  console.error("[start] Failed to launch server:", err);
+  process.exit(1);
 });
 
 child.on("exit", (code, signal) => {
@@ -37,5 +45,9 @@ child.on("exit", (code, signal) => {
   process.exit(code ?? 0);
 });
 
-process.on("SIGTERM", () => child.kill("SIGTERM"));
-process.on("SIGINT", () => child.kill("SIGINT"));
+const shutdown = (sig) => {
+  child.kill(sig);
+};
+
+process.on("SIGTERM", () => shutdown("SIGTERM"));
+process.on("SIGINT", () => shutdown("SIGINT"));

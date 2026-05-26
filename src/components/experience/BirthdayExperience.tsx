@@ -1,37 +1,16 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MusicProvider } from "@/context/MusicContext";
 import { Countdown } from "@/components/sections/Countdown";
 import { LoadingScreen } from "@/components/sections/LoadingScreen";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { CakeSection } from "@/components/sections/CakeSection";
+import { MessageSection } from "@/components/sections/MessageSection";
 import { MusicToggle } from "./MusicToggle";
+import { KawaiiCursor } from "@/components/ui/KawaiiCursor";
 import { EASE_SMOOTH } from "@/lib/easing";
-const KawaiiCursor = dynamic(
-  () =>
-    import("@/components/ui/KawaiiCursor").then((m) => ({
-      default: m.KawaiiCursor,
-    })),
-  { ssr: false }
-);
-
-const CakeSection = dynamic(
-  () =>
-    import("@/components/sections/CakeSection").then((m) => ({
-      default: m.CakeSection,
-    })),
-  { ssr: false }
-);
-
-const MessageSection = dynamic(
-  () =>
-    import("@/components/sections/MessageSection").then((m) => ({
-      default: m.MessageSection,
-    })),
-  { ssr: false }
-);
 
 type Phase = "countdown" | "loading" | "main";
 
@@ -40,13 +19,6 @@ function ExperienceInner() {
 
   const onCountdownDone = useCallback(() => setPhase("loading"), []);
   const onLoadDone = useCallback(() => setPhase("main"), []);
-
-  useEffect(() => {
-    if (phase === "loading") {
-      void import("@/components/sections/CakeSection");
-      void import("@/components/sections/MessageSection");
-    }
-  }, [phase]);
 
   useEffect(() => {
     if (phase === "main") {
