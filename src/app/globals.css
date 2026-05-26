@@ -38,6 +38,16 @@ body {
   min-height: 100%;
 }
 
+.intro-countdown-num {
+  text-shadow: 0 0 60px rgba(255, 255, 255, 0.35);
+  will-change: transform, opacity;
+}
+
+.intro-countdown-finale {
+  text-shadow: 0 0 40px rgba(255, 200, 220, 0.25);
+  will-change: transform, opacity;
+}
+
 .glass-card {
   background: var(--glass);
   backdrop-filter: blur(20px);

@@ -30,7 +30,7 @@ export function LoadingScreen({ onComplete }: Props) {
     <AnimatePresence>
       {!exiting && (
         <motion.div
-          exit={{ opacity: 0, filter: "blur(8px)" }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.7, ease: EASE_SMOOTH }}
           className="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-[#ffd6e7]"
         >

@@ -1,4 +1,4 @@
-# WEB SERVICE only — do not use Static Site for this Next.js app
+# Web Service (NOT Static Site)
 services:
   - type: web
     name: shamm-birthday
@@ -12,5 +12,3 @@ services:
         value: "20.11.0"
       - key: HOSTNAME
         value: "0.0.0.0"
-      - key: NODE_ENV
-        value: production

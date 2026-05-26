@@ -9,8 +9,6 @@ import { LoadingScreen } from "@/components/sections/LoadingScreen";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { MusicToggle } from "./MusicToggle";
 import { EASE_SMOOTH } from "@/lib/easing";
-import { dismissAppBoot } from "@/lib/dismissAppBoot";
-
 const KawaiiCursor = dynamic(
   () =>
     import("@/components/ui/KawaiiCursor").then((m) => ({
@@ -42,10 +40,6 @@ function ExperienceInner() {
 
   const onCountdownDone = useCallback(() => setPhase("loading"), []);
   const onLoadDone = useCallback(() => setPhase("main"), []);
-
-  useEffect(() => {
-    dismissAppBoot();
-  }, []);
 
   useEffect(() => {
     if (phase === "loading") {

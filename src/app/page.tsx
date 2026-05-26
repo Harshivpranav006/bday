@@ -1,13 +1,4 @@
-import dynamic from "next/dynamic";
-import { BootLoader } from "@/components/ui/BootLoader";
-
-const BirthdayExperience = dynamic(
-  () =>
-    import("@/components/experience/BirthdayExperience").then(
-      (mod) => mod.BirthdayExperience
-    ),
-  { loading: () => <BootLoader />, ssr: true }
-);
+import { BirthdayExperience } from "@/components/experience/BirthdayExperience";
 
 export default function Home() {
   return <BirthdayExperience />;

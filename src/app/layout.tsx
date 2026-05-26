@@ -1,5 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Nunito, Poppins } from "next/font/google";
+import {
+  Cormorant_Garamond,
+  Great_Vibes,
+  Inter,
+  Nunito,
+  Playfair_Display,
+  Poppins,
+} from "next/font/google";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -7,7 +14,6 @@ const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
   display: "swap",
-  preload: true,
 });
 
 const nunito = Nunito({
@@ -15,8 +21,44 @@ const nunito = Nunito({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
   display: "swap",
-  preload: true,
 });
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+const greatVibes = Great_Vibes({
+  variable: "--font-great-vibes",
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["300", "400"],
+  display: "swap",
+});
+
+const fontVariables = [
+  poppins.variable,
+  nunito.variable,
+  cormorant.variable,
+  playfair.variable,
+  greatVibes.variable,
+  inter.variable,
+].join(" ");
 
 export const metadata: Metadata = {
   title: "Happy Birthday Shamm 🎀",
@@ -26,7 +68,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#ffd6e7",
+  maximumScale: 5,
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -35,22 +78,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="min-h-full scroll-smooth">
       <body
-        className={`${poppins.variable} ${nunito.variable} min-h-full touch-pan-y antialiased`}
+        className={`${fontVariables} min-h-full touch-pan-y antialiased`}
       >
         <div
           id="app-boot"
           suppressHydrationWarning
-          className="fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#ffd6e7] transition-opacity duration-300"
-          role="status"
-          aria-live="polite"
-        >
-          <p className="animate-bounce-cute text-5xl" aria-hidden>
-            🎀
-          </p>
-          <p className="mt-6 font-[family-name:var(--font-nunito)] text-base font-semibold text-[#7a4d5c]">
-            Loading your surprise…
-          </p>
-        </div>
+          className="fixed inset-0 z-[99999] bg-black transition-opacity duration-300"
+          aria-hidden
+        />
         {children}
       </body>
     </html>
